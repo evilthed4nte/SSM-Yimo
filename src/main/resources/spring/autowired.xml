@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--自动注入-->
+    <bean class="com.yimo.pojo.User" id="user" autowire="constructor" >
+        <property name="name" value="陈慧琳"/>
+        <property name="age" value="45"/>
+    </bean>
+    <bean class="com.yimo.pojo.Cat" name="cat">
+        <property name="name" value="auto猫"></property>
+        <property name="legs" value="1220"></property>
+    </bean>
+    <bean class="com.yimo.pojo.Cat" name="cat1">
+        <property name="name" value="auto猫-2"></property>
+        <property name="legs" value="12202222"></property>
+    </bean>
+</beans>

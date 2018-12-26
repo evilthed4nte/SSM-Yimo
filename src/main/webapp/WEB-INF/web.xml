@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1"
+         metadata-complete="true">
+
+    <!--注册一个前端控制器叫做DispatcherServlet-->
+    <servlet>
+        <!--如果不修改spring配置文件默认的位置 那么springmvc会去web-inf下面找一个springmvc-servlet.xml的文件
+        -->
+        <servlet-name>springmvc</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <!--classpath也就是resources文件夹下的springmvc 可改名-->
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
+        </init-param>
+    </servlet>
+
+
+
+    <!--servlet映射配置-->
+    <servlet-mapping>
+        <servlet-name>springmvc</servlet-name>
+        <!--这里写 / -->
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--注册一个支持所有http请求的过滤器-->
+    <!--<filter>-->
+        <!--<filter-name>hiddenHttpMethodFilter</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>-->
+    <!--</filter>-->
+
+</web-app>

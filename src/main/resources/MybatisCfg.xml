@@ -1,0 +1,49 @@
+<!--For Mybatis -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="db.properties"></properties>
+    <settings>
+        <!--缓存-->
+        <setting name="cacheEnabled" value="true"/>
+        <!--<setting name="lazyLoadingEnabled" value="true"/>-->
+        <!--<setting name="multipleResultSetsEnabled" value="true"/>-->
+        <!--<setting name="useColumnLabel" value="true"/>-->
+        <!--<setting name="useGeneratedKeys" value="false"/>-->
+        <!--<setting name="autoMappingBehavior" value="PARTIAL"/>-->
+        <!--<setting name="autoMappingUnknownColumnBehavior" value="WARNING"/>-->
+        <!--<setting name="defaultExecutorType" value="SIMPLE"/>-->
+        <!--<setting name="defaultStatementTimeout" value="25"/>-->
+        <!--<setting name="defaultFetchSize" value="100"/>-->
+        <!--<setting name="safeRowBoundsEnabled" value="false"/>-->
+        <!--下划线风格转换为驼峰风格-->
+        <setting name="mapUnderscoreToCamelCase" value="true"></setting>
+        <!--LOG4J日志-->
+        <setting name="logImpl" value="LOG4J"></setting>
+        <!--<setting name="localCacheScope" value="SESSION"/>-->
+        <!--<setting name="jdbcTypeForNull" value="OTHER"/>-->
+        <!--<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString"/>-->
+    </settings>
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="UNPOOLED">
+                    <property name="driver" value="${driver}" />
+                    <property name="url" value="${url}" />
+                    <property name="username" value="${username}" />
+                    <property name="password" value="${password}" />
+            </dataSource>
+
+        </environment>
+    </environments>
+    <!-- Continue going here -->
+    <mappers>
+        <!--单个xml加载-->
+        <!--<mapper resource="com/hz/mapper/GirlMapper.xml"></mapper>-->
+        <!--加载整个包-->
+        <package name="com.yimo.mapper"></package>
+    </mappers>
+
+</configuration>

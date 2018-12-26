@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:jee="http://www.springframework.org/schema/jee"
+       xmlns:lang="http://www.springframework.org/schema/lang"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.3.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd
+       http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+       http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache-4.3.xsd
+       http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang-4.3.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd  ">
+
+
+    <!--For Spring bean -->
+
+    <!--将对象得创建交给spring 容器  在这个配置文件里去生命要什么对象-->
+    <!--class 写java类的全限定类名-->
+    <!--<bean class="com.hz.pojo.GirlMapper" id="girl"></bean>-->
+
+    <!--这个就是注入 bean-->
+    <!--<bean class="com.hz.pojo.PrettyGirl" id="girl"></bean>-->
+
+    <!--值的注入-->
+    <!--<bean class="com.yimo.pojo.People" id="people">-->
+    <!--<property name="name" value="阿发"></property>-->
+    <!--<property name="age" value="63"></property>-->
+    <!--<property name="friends">-->
+    <!--<array>-->
+    <!--<value>张学友</value>-->
+    <!--<value>王立国</value>-->
+    <!--<value>王力宏</value>-->
+    <!--<value>黎明</value>-->
+    <!--</array>-->
+    <!--</property>-->
+    <!--<property name="nums">-->
+    <!--<list>-->
+    <!--<value>8</value>-->
+    <!--<value>82</value>-->
+    <!--<value>83</value>-->
+    <!--<value>84</value>-->
+    <!--<value>85</value>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--<property name="cats">-->
+    <!--<list>-->
+    <!--<bean class="com.yimo.pojo.Cat">-->
+    <!--<property name="name" value="内部类 渐层白"></property>-->
+    <!--<property name="legs" value="4"></property>-->
+    <!--</bean>-->
+    <!--</list>-->
+    <!--</property>-->
+    <!--<property name="flowers">-->
+    <!--<set>-->
+    <!--<bean class="com.yimo.pojo.Flower">-->
+    <!--<property name="name" value="牡丹"></property>-->
+    <!--<property name="color" value="白"></property>-->
+    <!--</bean>-->
+    <!--<bean class="com.yimo.pojo.Flower">-->
+    <!--<property name="color" value="红色"></property>-->
+    <!--<property name="name" value="玫瑰"></property>-->
+    <!--</bean>-->
+    <!--</set>-->
+    <!--</property>-->
+    <!--<property name="users">-->
+    <!--<map key-type="java.lang.String" value-type="com.yimo.pojo.User">-->
+    <!--<entry key="user1">-->
+    <!--<bean class="com.yimo.pojo.User">-->
+    <!--<property name="name" value="周杰伦"></property>-->
+    <!--<property name="age" value="32"></property>-->
+    <!--</bean>-->
+    <!--</entry>-->
+    <!--<entry key="user2">-->
+    <!--<bean class="com.yimo.pojo.User">-->
+    <!--<property name="name" value="叶惠美"></property>-->
+    <!--<property name="age" value="87"></property>-->
+    <!--</bean>-->
+    <!--</entry>-->
+    <!--</map>-->
+    <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean class="com.yimo.pojo.Cat" id="cat">-->
+    <!--<property name="name" value="波斯猫"></property>-->
+    <!--<property name="legs" value="232"></property>-->
+    <!--</bean>-->
+
+    <!--引入多个配置文件以及配置扫描包-->
+    <!--<import resource="classpath:spring/spring-*.xml"/>-->
+    <!--<context:component-scan base-package="com.yimo">-->
+    <!--<context:exclude-filter type="annotation"expression="org.springframework.stereotype.Repository"></context:exclude-filter>-->
+    <!--</context:component-scan>-->
+
+
+    <!--1. AOP是基于代理完成的 所以我们要激活自动代理-->
+    <aop:aspectj-autoproxy/>
+    <context:component-scan base-package="com.yimo.advice"/>
+
+    <bean class="com.yimo.service.ProviderService" id="providerService"/>
+    <!--<bean class="com.yimo.advice.BeforeAdvice" id="beforeAdvice"/>-->
+    <!--&lt;!&ndash;3. 配置切入点等等信息&ndash;&gt;-->
+    <!--<aop:config>-->
+        <!--<aop:aspect ref="beforeAdvice">-->
+            <!--<aop:after method="methodBefore" pointcut="execution(* com.yimo.service.ProviderService.add(String))"></aop:after>-->
+            <!--<aop:after method="before" pointcut="execution(* com.yimo.service.ProviderService.add(..))"></aop:after>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+</beans>
