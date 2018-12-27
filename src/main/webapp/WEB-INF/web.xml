@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
@@ -18,9 +19,6 @@
             <param-value>classpath:spring/spring-mvc.xml</param-value>
         </init-param>
     </servlet>
-
-
-
     <!--servlet映射配置-->
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
@@ -28,10 +26,30 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--注册一个支持所有http请求的过滤器-->
-    <!--<filter>-->
-        <!--<filter-name>hiddenHttpMethodFilter</filter-name>-->
-        <!--<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>-->
-    <!--</filter>-->
+    <!--注册一个支持所有http请求类型的过滤器-->
+    <filter>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
+
+    <!--&lt;!&ndash;给MyServletTest 原生的Servlet 来个配置&ndash;&gt;-->
+    <!--<servlet>-->
+        <!--&lt;!&ndash;给Servlet取个名 一般与类名相同&ndash;&gt;-->
+        <!--<servlet-name>MyServletTest</servlet-name>-->
+        <!--&lt;!&ndash;全限定类名 也就是servlet的位置&ndash;&gt;-->
+        <!--<servlet-class>com.yimo.servlet.MyServletTest</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--&lt;!&ndash;跟上面的Servlet类名相同&ndash;&gt;-->
+        <!--<servlet-name>MyServletTest</servlet-name>-->
+        <!--&lt;!&ndash;浏览器通过该url找到servlet 相当于项目名称&ndash;&gt;-->
+        <!--<url-pattern>/yimoservlettest</url-pattern>-->
+    <!--</servlet-mapping>-->
 
 </web-app>
